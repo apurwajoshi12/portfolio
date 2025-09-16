@@ -1,0 +1,246 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Apurwa Joshi | Shopify Developer Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+    body{background:#0d0d0d;color:#fff;line-height:1.6;}
+    a{text-decoration:none;color:inherit;}
+    img{max-width:100%;display:block;}
+
+    /* Navbar */
+    header{position:fixed;top:0;left:0;width:100%;background:#111;box-shadow:0 2px 6px rgba(0,0,0,0.4);z-index:100;}
+    .nav{display:flex;justify-content:space-between;align-items:center;max-width:1200px;margin:auto;padding:15px 20px;}
+    .nav h1{font-size:1.6rem;color:#ffcc00;font-weight:700;letter-spacing:1px;}
+    .nav ul{list-style:none;display:flex;gap:25px;}
+    .nav ul li a{color:#ddd;font-weight:500;transition:0.3s;}
+    .nav ul li a:hover{color:#ffcc00;}
+    .btn{display:inline-block;background:#ffcc00;color:#000;padding:10px 22px;border-radius:6px;transition:0.3s;font-weight:600;}
+    .btn:hover{background:#e6b800;}
+
+    /* Mobile Menu */
+    .menu-toggle{display:none;flex-direction:column;cursor:pointer;gap:5px;}
+    .menu-toggle span{width:25px;height:3px;background:#ffcc00;}
+    @media(max-width:768px){
+      .nav ul{position:absolute;top:60px;left:0;width:100%;flex-direction:column;background:#111;display:none;padding:20px 0;text-align:center;}
+      .nav ul.active{display:flex;}
+      .menu-toggle{display:flex;}
+    }
+
+    /* Hero */
+    .hero{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;max-width:1200px;margin:auto;padding:120px 20px 80px;gap:50px;text-align:center;}
+    .hero-text{flex:1;min-width:280px;}
+    .hero-text h2{font-size:2.8rem;margin-bottom:15px;color:#ffcc00;}
+    .hero-text p{margin-bottom:20px;color:#bbb;font-size:1.1rem;}
+    .hero-img{flex:1;min-width:280px;text-align:center;}
+    .hero-img img{width:260px;height:260px;object-fit:cover;border-radius:50%;border:5px solid #ffcc00;box-shadow:0 0 20px rgba(255,204,0,0.6);}
+
+    /* Section general */
+    section{padding:20px 0px;max-width:1200px;margin:auto;}
+    section h2{font-size:2rem;color:#ffcc00;margin-bottom:40px;text-align:center;position:relative;}
+    section h2::after{content:"";display:block;width:60px;height:3px;background:#ffcc00;margin:12px auto 0;border-radius:2px;}
+
+    /* Services */
+    .services{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:30px;}
+    .service{background:#1a1a1a;padding:30px;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,0.6);transition:0.3s;}
+    .service:hover{transform:translateY(-8px);}
+    .service img{width:50px;margin-bottom:20px;}
+    .service h3{margin-bottom:12px;color:#ffcc00;font-size:1.2rem;}
+
+    /* Skills */
+    .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:25px;justify-items:center;}
+    .skill{background:#1a1a1a;padding:25px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.5);text-align:center;transition:0.3s;width:120px;}
+    .skill:hover{transform:scale(1.08);}
+    .skill img{width:50px;margin-bottom:12px;}
+    .skill span{color:#ddd;font-size:0.95rem;font-weight:500;}
+
+    /* Projects */
+    .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;}
+    .project{background:#1a1a1a;border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.6);transition:0.3s;}
+    .project:hover{transform:translateY(-6px);}
+    .project img{width:100%;height:200px;object-fit:cover;}
+    .project-content{padding:20px;}
+    .project-content h3{margin-bottom:12px;font-size:1.3rem;color:#ffcc00;}
+    .project-content p{margin-bottom:15px;font-size:1rem;color:#bbb;}
+    .project-content a{color:#ffcc00;font-weight:600;}
+
+    /* Testimonials */
+    .testimonials{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;}
+    .testimonial{background:#1a1a1a;padding:30px;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,0.6); transition:0.3s;}
+    .testimonial:hover{transform:scale(1.03);}
+    .testimonial img{width:70px;height:70px;border-radius:50%;object-fit:cover;margin-bottom:15px;border:3px solid #ffcc00;}
+    .testimonial p{color:#ccc;font-size:0.95rem;margin-bottom:12px;}
+    .testimonial h4{color:#ffcc00;font-size:1rem;}
+
+    /* Contact */
+    .contact{text-align:center;}
+    .contact p{margin:10px 0;color:#bbb;font-size:1rem;}
+    .contact a{color:#ffcc00;font-weight:500;}
+
+    /* Footer */
+    footer{background:#111;padding:25px;text-align:center;color:#777;margin-top:40px;font-size:0.95rem;}
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header>
+    <div class="nav">
+      <h1>Apurwa Joshi</h1>
+      <div class="menu-toggle" onclick="document.querySelector('.nav ul').classList.toggle('active')">
+        <span></span><span></span><span></span>
+      </div>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="about">
+    <div class="hero-img">
+      <img src="WhatsApp Image 2025-07-19 at 10.52.11 PM.jpeg" alt="Apurwa Joshi">
+    </div>
+    <div class="hero-text">
+      <h2>Apurwa Joshi</h2>
+      <p>Shopify Developer | HTML | CSS | Liquid | Bootstrap | jQuery</p>
+      <a href="./apurwa-joshi-cv.pdf.pdf" class="btn" download="apurwa-joshi-cv.pdf.pdf">Download CV</a>
+    </div>
+  </section>
+ 
+  <!-- About -->
+  <section class="section">
+    <h2>About Me</h2>
+    <p style="text-align:center;max-width:900px;margin:auto;color:#ccc;font-size:1.05rem;">
+      I am Apurwa Joshi, a passionate Shopify Developer currently working at Expound Coderz, Dewas. 
+      I have completed my BCA from Acropolis Institute with 83%. 
+      I have also done a 3-month internship at ITS Geeks Dewas. 
+      My core skills include HTML, CSS, Bootstrap, jQuery, and Shopify Liquid templating.
+    </p>
+  </section>
+
+  <!-- Services -->
+  <section id="services">
+    <h2>Services</h2>
+    <div class="services">
+      <div class="service">
+        <img src="design.png" alt="UI/UX">
+        <h3>UI/UX Design</h3>
+        <p>The most modern and high-quality design made at a professional level.</p>
+      </div>
+      <div class="service">
+        <img src="code.png" alt="Frontend">
+        <h3>Frontend Development</h3>
+        <p>Building responsive, pixel-perfect websites with HTML, CSS, and JavaScript.</p>
+      </div>
+      <div class="service">
+        <img src="server.png" alt="Backend">
+        <h3>Shopify Development</h3>
+        <p>Custom Shopify themes and Liquid coding for unique eCommerce solutions.</p>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Skills -->
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skills-grid">
+      <div class="skill"><img src="html-5.png" alt="HTML"><span>HTML5</span></div>
+      <div class="skill"><img src="css3.png" alt="CSS"><span>CSS3</span></div>
+      <div class="skill"><img src="bootstrap.png" alt="Bootstrap"><span>Bootstrap</span></div>
+      <div class="skill"><img src="javascript.png" alt="JS"><span>JavaScript</span></div>
+      <div class="skill"><img src="jquery.png" alt="jQuery"><span>jQuery</span></div>
+      <div class="skill"><img src="download.png" alt="Shopify"><span>Shopify Liquid</span></div>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section class="section">
+    <h2>Education</h2>
+    <p style="text-align:center;"><strong>Bachelors of Computer Applications (BCA)</strong> - Prestige Institute, 83%</p>
+    <p style="text-align:center;"><strong>Masters of Computer Applications (MCA)</strong> - Acropolis Institute, 83%</p>
+  </section>
+
+  <!-- Experience -->
+  <section class="section">
+    <h2>Experience</h2>
+    <p style="text-align:center;"><strong>Current:</strong> Shopify Developer at Expound Coderz, Dewas</p>
+    <p style="text-align:center;"><strong>Internship:</strong> 3-month internship at ITS Geeks, Dewas</p>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="projects-grid">
+      <div class="project">
+        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80" alt="Project 1">
+        <div class="project-content">
+          <h3>Legovate Solutions</h3>
+          <p>A lawyer website built using HTML, CSS, and JavaScript. Clean UI, responsive design.</p>
+          <a href="#">View Live</a>
+        </div>
+      </div>
+      <div class="project">
+        <img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=600&q=80" alt="Project 2">
+        <div class="project-content">
+          <h3>Nahoria Shopify Website</h3>
+          <p>Shopify-based eCommerce site developed with custom Liquid code and product pages.</p>
+          <a href="#">View Live</a>
+        </div>
+      </div>
+      <div class="project">
+        <img src="website-template-design-projects.jpg" alt="Project 3">
+        <div class="project-content">
+          <h3>Portfolio Website</h3>
+          <p>Shopify-based eCommerce site developed with custom Liquid code and product pages.</p>
+          <a href="#">View Live</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials">
+    <h2>Testimonials</h2>
+    <div class="testimonials">
+      <div class="testimonial">
+        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client 1">
+        <p>"Apurwa is a very skilled Shopify developer. He built our eCommerce store quickly and efficiently."</p>
+        <h4>- John Doe, CEO of FashionHub</h4>
+      </div>
+      <div class="testimonial">
+        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Client 2">
+        <p>"Great communication and professional work. The website was responsive and user-friendly."</p>
+        <h4>- Sarah Lee, Business Owner</h4>
+      </div>
+      <div class="testimonial">
+        <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Client 3">
+        <p>"Delivered high-quality work on time. I will definitely recommend Apurwa for Shopify projects."</p>
+        <h4>- Mike Johnson, Entrepreneur</h4>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="contact">
+    <h2>Contact</h2>
+    <p><strong>Email:</strong> apurwanjoshi@gmail.com</p>
+    <p><strong>LinkedIn:</strong> <a href="#">www.linkedin.com/in/apurwa-joshi</a></p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Apurwa Joshi. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
